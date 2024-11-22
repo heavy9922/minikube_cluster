@@ -1,0 +1,11 @@
+.:53 {
+    forward . 8.8.8.8 9.9.9.9
+    log
+    errors
+}
+
+devops.com:53 {
+    file /etc/coredns/db.devops.com
+    log
+    errors
+}

@@ -1,0 +1,9 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: inlaze-pool-public
+  namespace: metallb-system
+spec:
+  addresses:
+  - 172.168.30.120-172.168.30.122
+

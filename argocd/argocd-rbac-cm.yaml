@@ -1,0 +1,58 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    # Role definitions
+    p, role:admin, applications, *, */*, allow
+    p, role:admin, projects, *, */*, allow
+    p, role:admin, repositories, *, */*, allow
+    p, role:admin, clusters, *, */*, allow
+
+    p, role:developer, applications, get, */*, allow
+    p, role:developer, applications, create, */*, allow
+    p, role:developer, applications, update, */*, allow
+    p, role:developer, applications, delete, */*, allow
+
+    p, role:readonly, applications, get, */*, allow
+    p, role:readonly, projects, get, */*, allow
+    p, role:readonly, repositories, get, */*, allow
+    p, role:readonly, clusters, get, */*, allow
+
+    # Group to role mapping
+    g, group:admins, role:admin
+    g, group:developers, role:developer
+    g, group:readers, role:readonly
+
+    # User to group mapping
+    g, ycastiblanco, group:admins
+    g, jgodoy, group:admins
+    g, imarin, group:readers
+    g, nmayorquin, group:readers
+    g, bmartinez, group:readers
+    g, jguerra, group:readers
+    g, jmontealegre, group:readers
+    g, lruiz, group:developers    
+    g, agutierrez, group:readers
+    g, dburgos, group:developers
+  policy.default: role:readonly
+  policy.matchMode: glob
+  scopes: '[groups]'
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"policy.csv":"","policy.default":"","policy.matchMode":"glob","scopes":"[groups]"},"kind":"ConfigMap","metadata":{"annotations":{"meta.helm.sh/release-name":"argocd","meta.helm.sh/release-namespace":"argocd"},"creationTimestamp":"2024-08-20T18:39:06Z","labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/instance":"argocd","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"argocd-rbac-cm","app.kubernetes.io/part-of":"argocd","app.kubernetes.io/version":"v2.12.1","helm.sh/chart":"argo-cd-7.4.4"},"name":"argocd-rbac-cm","namespace":"argocd","resourceVersion":"5223772","uid":"ceb99eca-480e-49d1-886b-0f688fcdcade"}}
+    meta.helm.sh/release-name: argocd
+    meta.helm.sh/release-namespace: argocd
+  creationTimestamp: "2024-08-20T18:39:06Z"
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: v2.12.1
+    helm.sh/chart: argo-cd-7.4.4
+  name: argocd-rbac-cm
+  namespace: argocd
+  resourceVersion: "5224842"
+  uid: ceb99eca-480e-49d1-886b-0f688fcdcade

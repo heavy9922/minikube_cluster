@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  1-aws-credentials: eyJhdXRocyI6eyJodHRwczovLzczMDMzNTIxNjMwOS5ka3IuZWNyLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tIjp7InVzZXJuYW1lIjoiYXJnb2NkLW1hbmFnZW1lbnQiLCJwYXNzd29yZCI6IklqS1ZHUmpjQmhiWmJ2MVVTRmN2S1lJaUE4RVkwQTd5QXAyOUtKYVIiLCJlbWFpbCI6Im5vbmUifX19
+kind: Secret
+metadata:
+  name: aws-creds
+  namespace: argocd
+type: Opaque
+

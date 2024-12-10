@@ -2,8 +2,8 @@
 
 # Variables
 USERNAME="yeferson"
-ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 STARSHIP_CONFIG_PATH="$HOME/.config/starship.toml"
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 KUBECONFIG_PATH="$HOME/.kube/config"
 
 # Actualización e instalación de dependencias necesarias
@@ -31,9 +31,95 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 if [ ! -f "$STARSHIP_CONFIG_PATH" ]; then
     echo "Configurando Starship..."
     mkdir -p "$(dirname "$STARSHIP_CONFIG_PATH")"
-    curl -o "$STARSHIP_CONFIG_PATH" https://raw.githubusercontent.com/starship/starship/master/starship.toml
 fi
-curl -fsSL https://starship.rs/install.sh | bash -s -- -y
+
+# Crear archivo starship.toml con la configuración especificada
+cat > "$STARSHIP_CONFIG_PATH" <<EOL
+# Get editor completions based on the config schema
+"\$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character]
+success_symbol = '[➜](bold green)'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+#---------Configs StartShip-----------#
+
+# ~/.config/starship.toml
+
+# Configuración general
+add_newline = false
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_status",
+    "docker_context",
+    "kubernetes",
+    "aws",
+    "terraform",
+    "python",
+    "nodejs",
+    "package",
+    "memory_usage",
+    "character"
+]
+
+[directory]
+truncation_length = 3
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 12
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "🔼 "
+behind = "🔽 "
+untracked = "🔧 "
+
+[docker_context]
+symbol = "🐳 "
+
+[kubernetes]
+symbol = "☸️  "
+context_aliases = { "minikube" = "mk", "default" = "df" }
+
+[aws]
+symbol = "☁️ "
+format = "on [\$profile](\$style) "
+
+[terraform]
+symbol = "💠 "
+format = "via [\$version](\$style) "
+
+[python]
+symbol = "🐍 "
+pyenv_version_name = true
+
+[nodejs]
+symbol = "⬢ "
+
+[memory_usage]
+symbol = "💻 "
+threshold = 70
+
+[custom.zsh]
+command = "echo 🚀"
+when = true
+
+[localip]
+ssh_only = false
+format = '@[\$localipv4](bold red) '
+disabled = false
+EOL
 
 # Crear archivo .zshrc con la configuración especificada
 echo "Configurando archivo .zshrc..."

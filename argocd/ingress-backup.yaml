@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd.app.test
+  - host: argocd-tmp.inlazetest.com
     http:
       paths:
       - path: /
@@ -24,6 +24,5 @@ spec:
               number: 443
   tls:
   - hosts:
-    - argocd.app.test
+    - argocd-tmp.inlazetest.com
     secretName: argocd-tls-secret
-

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-USERNAME="yeferson"
+USERNAME="admin"
 STARSHIP_CONFIG_PATH="$HOME/.config/starship.toml"
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 KUBECONFIG_PATH="$HOME/.kube/config"

@@ -58,4 +58,10 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose || true
 echo "Verificando la instalación de Docker Compose..."
 docker-compose --version
 
+sudo usermod -aG docker ${USER}
+
+su - ${USER}
+
+id -nG
+
 echo "Docker y Docker Compose se han instalado correctamente. ¡Disfruta!"

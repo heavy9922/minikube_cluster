@@ -44,3 +44,13 @@ kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ## instalacion de cert-manager 
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
+
+
+
+instalar helm en linux
+
+
+## instalar jenkins en el cluster
+
+helm repo add jenkins https://charts.jenkins.io
+helm repo update

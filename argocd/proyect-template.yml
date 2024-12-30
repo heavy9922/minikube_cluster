@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: inlaze
+  namespace: argocd
+spec:
+  description: Inlaze projects
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: '*'
+      name: 'in-cluster'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceBlacklist:
+    - group: ''
+      kind: 'ResourceQuota'
+  orphanedResources:
+    warn: false
